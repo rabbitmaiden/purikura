@@ -1,12 +1,15 @@
-#!/usr/bin/python
-import picamera
+import io
 import time
+import picamera
+import cv2
+import numpy as np
 
-camera = picamera.PiCamera();
-camera.resolution = (600,800)
 
-camera.start_preview();
 
-time.sleep(5)
+# "Decode" the image from the array, preserving colour
+image = cv2.imread("chromakey.jpg")
 
-camera.capture("chromakey.jpg", format="jpeg", quality=95)
+pMOG = cv2.BackgroundSubtractorMOG()
+
+fgmask = pMOG.apply(image)
+cv2.imwrite("pmog.jpg", fgmask)

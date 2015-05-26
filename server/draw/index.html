@@ -1,3 +1,106 @@
 <!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=900, user-scalable=no, initial-scale=.66" />    
+    <title>Riot Purikura!</title>
+    <script src="/draw/jquery-1.11.3.min.js"></script>
+    <style>
+.fourwindows {
+  width: 900px;
+  margin: 10px auto 0px;
+}
+.fourwindows img {
+  width: 420px;
+  border: 2px solid black;
+  margin: 10px;
+}
 
+#drawlink {
+  display: block;
+  width: 600px;
+  height: 200px;
+  background-image: url("/draw/assets/touchtostart.png");
+  margin: 0px auto;
+}
+
+body.blue #drawlink {
+  background-image: url("/draw/assets/touchtostart-blue.png");
+}
+
+.waiting {
+  background-image: url("/draw/assets/waiting-pink.png");
+  width: 100%;
+  height: 800px;
+  background-repeat: no-repeat;
+  background-position: 200px 400px;
+}
+
+body.blue .waiting {
+  background-image: url("/draw/assets/waiting-blue.png");
+}
+
+/* TODO: Fancy animation shit */
+
+    </style>
+  </head>
+  <body>
+    <div class="waiting"></div>
+    <div id="set" style="visibility: hidden;">
+      <div class="fourwindows">
+        <img id="photo1">
+        <img id="photo2">
+        <img id="photo3">
+        <img id="photo4">
+      </div>
+      <a id="drawlink" href="/draw/draw.php"><img src=></a>
+      <!-- TODO: not my photos -->
+    </div>
+    <script>
+      var side = 'PINK';
+      var matches = location.search.match(/side=([^&]*)/);
+      if (matches && matches[1]){
+        side = matches[1];
+      }
+      $(document.body).addClass(side.toLowerCase());
+
+      function checkForSet() {
+        $.ajax({
+          "method": "get",
+          "url": "/?action=getset&side="+side,
+          "success": function(resp) {
+            if (resp.code) {
+              displaySet(resp.code);
+            } else {
+              setTimeout(checkForSet, 5000);
+            }
+          }
+        })
+      }
+
+      checkForSet();
+
+      function displaySet(code) {
+        var urlBase = '/photos/'+side+'/'+code+'/';
+
+        $("img#photo1").attr('src', urlBase + "photo1.jpg");
+        $("img#photo2").attr('src', urlBase + "photo2.jpg");
+        $("img#photo3").attr('src', urlBase + "photo3.jpg");
+        $("img#photo4").attr('src', urlBase + "photo4.jpg");
+
+        $("a#drawlink").attr('href', '/draw/draw.php?side='+side+'&code='+code);
+
+        $('.waiting').hide();
+
+        $("#set").css('visibility', 'visible');
+        $(document.body).on("click", function(){
+          location.href = '/draw/draw.php?side='+side+'&code='+code;
+        });
+      }
+
+    </script>
+
+
+
+
+  </body>
 </html>

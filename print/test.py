@@ -11,3 +11,7 @@ for x in range(0,4):
   final.paste(photo, photoCoords[x])
 
 final.save("./composite.jpg", "jpeg", dpi=dpi,quality=95)
+
+
+
+

@@ -1,0 +1,251 @@
+.tray {
+  width: 700px;
+  height: 175px;
+  padding-top: 10px;
+  margin-left: 10px;
+  clear: left;
+}
+
+.tray .arrow {
+  width: 40px;
+  height: 175px;
+  background-position: 6px 66px;
+  background-repeat: no-repeat;
+  float: left;
+}
+
+.tray .arrow.left {
+  background-image: url("/draw/assets/left-pink.png");
+}
+
+body.blue .tray .arrow.left {
+  background-image: url("/draw/assets/left-blue.png");
+}
+
+.tray .arrow.right {
+  background-image: url("/draw/assets/right-pink.png");
+}
+
+body.blue .tray .arrow.right {
+  background-image: url("/draw/assets/right-blue.png");
+}
+
+.tray .tools {
+  width: 574px;
+  float: left;
+  height: 175px;
+  margin: 0px 10px;
+}
+
+.tools .toolset {
+  height: 160px;
+  width: 574px;
+  overflow: hidden;
+  position: relative;
+  display: none;
+}
+
+.tools .toolset.active {
+  display: block;
+}
+
+
+.tools .toolset .slider {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.tools .page {
+  width: 574px;
+  height: 175px;
+  float: left;
+}
+
+
+.tools .tool.active {
+  background-color: #666;
+}
+
+.tools .tool {
+  width: 80px;
+  height: 80px;
+  padding: 0px 1px;
+  float: left;
+  background-color: #999;
+  overflow: hidden;
+}
+
+.tools .tool .icon {
+  width: 80px;
+  height: 80px;
+  background-repeat: no-repeat;
+
+}
+
+.tools.size1 .tool .icon {
+  background-size: 40px 40px;
+  background-position: 20px 20px;
+}
+
+.tools.size2 .tool .icon {
+  background-size: 60px 60px;
+  background-position: 10px 10px;
+}
+
+.tools.size3 .tool .icon {
+  background-size: 80px 80px;
+  background-position: 0px 0px;
+}
+
+.tools.size4 .tool .icon {
+  background-size: 100px 100px;
+  background-position: -10px -10px;
+}
+
+.tools.angle1 .tool .icon {
+  -webkit-transform: rotate(-90deg);  
+  transform: rotate(-90deg);
+}
+.tools.angle2 .tool .icon {
+  -webkit-transform: rotate(-45deg);  
+  transform: rotate(-45deg);
+}
+.tools.angle3 .tool .icon {
+  -webkit-transform: rotate(-30deg);  
+  transform: rotate(-30deg);
+}
+.tools.angle4 .tool .icon {
+  -webkit-transform: rotate(-15deg);
+  transform: rotate(-15deg);
+}
+.tools.angle5 .tool .icon {
+  -webkit-transform: rotate(-0deg);
+  transform: rotate(-0deg);
+}
+.tools.angle6 .tool .icon {
+  -webkit-transform: rotate(15deg);
+  transform: rotate(15deg);
+}
+.tools.angle7 .tool .icon {
+  -webkit-transform: rotate(30deg);
+  transform: rotate(30deg);
+}
+.tools.angle8 .tool .icon {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.tools.angle9 .tool .icon {
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+/* Colors */
+
+#toolset-paint .tool.pink .icon {
+  background-image: url("/draw/assets/color-pink.png");
+}
+
+#toolset-paint .tool.blue .icon {
+  background-image: url("/draw/assets/color-blue.png");
+}
+
+#toolset-paint .tool.green .icon {
+  background-image: url("/draw/assets/color-green.png");
+}
+
+#toolset-paint .tool.orange .icon {
+  background-image: url("/draw/assets/color-orange.png");
+}
+
+#toolset-paint .tool.red .icon {
+  background-image: url("/draw/assets/color-red.png");
+}
+
+#toolset-paint .tool.yellow .icon {
+  background-image: url("/draw/assets/color-yellow.png");
+}
+
+#toolset-paint .tool.purple .icon {
+  background-image: url("/draw/assets/color-purple.png");
+}
+
+/* inverse colors */
+
+#toolset-paint .tool.pink.inverse .icon {
+  background-image: url("/draw/assets/color-pink-inverse.png");
+}
+
+#toolset-paint .tool.blue.inverse .icon {
+  background-image: url("/draw/assets/color-blue-inverse.png");
+}
+
+#toolset-paint .tool.green.inverse .icon {
+  background-image: url("/draw/assets/color-green-inverse.png");
+}
+
+#toolset-paint .tool.orange.inverse .icon {
+  background-image: url("/draw/assets/color-orange-inverse.png");
+}
+
+#toolset-paint .tool.red.inverse .icon {
+  background-image: url("/draw/assets/color-red-inverse.png");
+}
+
+#toolset-paint .tool.yellow.inverse .icon {
+  background-image: url("/draw/assets/color-yellow-inverse.png");
+}
+
+#toolset-paint .tool.purple.inverse .icon {
+  background-image: url("/draw/assets/color-purple-inverse.png");
+}
+
+
+#toolset-roller .tool {
+  width: 180px;
+  height: 70px;
+  padding-top: 10px;
+}
+
+#toolset-roller .tool .icon {
+  width: 60px;
+  height: 60px;
+  display: inline-block;
+  text-align: center;
+  margin-left: -3px;
+}
+
+#toolset-roller .tool .iconset {
+  width: 180px;
+  margin: 0px auto;
+}
+
+.tools.size1 #toolset-roller .tool .iconset {
+  width: 90px;
+}
+
+.tools.size1 #toolset-roller .tool .icon {
+  width: 30px;
+  background-size: 30px 30px;
+  background-position: 0px 15px;
+}
+
+.tools.size2 #toolset-roller .tool .iconset {
+  width: 120px;
+}
+
+.tools.size2 #toolset-roller .tool .icon {
+  width: 40px;
+  background-size: 40px 40px;
+  background-position: 0px 10px;
+}
+
+.tools.size3 #toolset-roller .tool .icon {
+  background-size: 55px 55px;
+  background-position: 2px 2px;
+}
+
+.tools.size4 #toolset-roller .tool .icon {
+  background-size: 70px 70px;
+  background-position: -5px -5px;
+}

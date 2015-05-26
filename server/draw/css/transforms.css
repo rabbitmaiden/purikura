@@ -1,0 +1,65 @@
+.transforms .label {
+  width: 120px;
+  height: 35px;
+  background-position: 10px 0px;
+  background-repeat: no-repeat;
+  padding-bottom: 10px;
+  clear: left;
+}
+
+.transforms .label.size {
+  margin-top: 10px;
+  background-image: url("/draw/assets/size-pink.png");
+}
+
+body.blue .transforms .label.size {
+  background-image: url("/draw/assets/size-blue.png");
+}
+
+.transforms .label.rotate {
+  background-image: url("/draw/assets/rotate-pink.png");
+}
+
+body.blue .transforms .label.rotate {
+  background-image: url("/draw/assets/rotate-blue.png");
+}
+
+.transforms .transform {
+  width: 120px;
+  height: 60px;
+  display: inline-block;
+  background-position: 25px 0px;
+  background-repeat: no-repeat;
+}
+
+.transforms .transform.minus {
+  background-image: url("/draw/assets/minus-pink.png");
+  margin-right: 8px;
+}
+.transforms .transform.plus {
+  background-image: url("/draw/assets/plus-pink.png");
+}
+.transforms .transform.ccw {
+  background-image: url("/draw/assets/rotate-ccw-pink.png");
+  margin-right: 8px;
+}
+.transforms .transform.cw {
+  background-image: url("/draw/assets/rotate-cw-pink.png");
+}
+
+body.blue .transforms .transform.minus {
+  background-image: url("/draw/assets/minus-blue.png");
+}
+body.blue .transforms .transform.plus {
+  background-image: url("/draw/assets/plus-blue.png");
+}
+body.blue .transforms .transform.ccw {
+  background-image: url("/draw/assets/rotate-ccw-blue.png");
+}
+body.blue .transforms .transform.cw {
+  background-image: url("/draw/assets/rotate-cw-blue.png");
+}
+
+.transforms #rotato {
+  visibility: hidden;
+}
