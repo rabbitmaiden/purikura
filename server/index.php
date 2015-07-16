@@ -34,7 +34,7 @@
       exit;
     }
     $file = "/home/pi/purikura/" . $file;
-    if (is_file($file)) {
+    if (is_file($file) && preg_match('@\composite.jpg$@', $file)) {
       echo `lp $file`;
     }
     exit;

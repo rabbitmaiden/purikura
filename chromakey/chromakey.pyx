@@ -1,28 +1,33 @@
 #!/usr/bin/python
-from PIL import Image
-from pprint import pprint
-import copy
 import numpy
-import sys
-import math
+cimport numpy
+from libc.math cimport sqrt
 
-def colorclose(Cb_p, Cr_p):
+cdef double colorclose(int Cb_p, int Cr_p) nogil:
+  cdef int Cb_key, Cr_key
+  cdef double tola, tolb, cb2, cr2, temp
   Cb_key = 92
   Cr_key = 86
   tola = 44.0
   tolb = 52.0
   cb2 = (Cb_key-Cb_p) * (Cb_key-Cb_p)
   cr2 = (Cr_key-Cr_p) * (Cr_key-Cr_p)
-  temp = math.sqrt(cb2+cr2)
+  temp = cb2 + cr2
+  temp = sqrt(temp)
 
   if temp < tola:
-    return True
+    return 0
   elif (temp < tolb):
     return (temp-tola)/(tolb-tola)
   else:
-    return False
+    return 1
 
-def chromakey(fg, bg):
+
+cpdef numpy.ndarray chromakey(fg, bg):
+
+  cdef int i, j, Cb_p, Cb_r, xsize, ysize
+  cdef double mask
+  cdef list irange, jrange, krange
 
   fg_rgb = numpy.array(fg)
   fg_ycbcr = fg.convert("YCbCr")
@@ -46,12 +51,12 @@ def chromakey(fg, bg):
 
       mask = 1-colorclose(Cb_p, Cb_r)
 
-      if mask == True:
+      if mask == 0:
         out[i][j] = fg_rgb[i][j]
-      elif mask == False:
+      elif mask == 1:
         out[i][j] = bg_rgb[i][j]
       else:
         maskarray = [mask, mask, mask]
         out[i][j] = fg_rgb[i][j] - (mask * fg_rgb[i][j]) + (bg_rgb[i][j] * mask)
 
-  return Image.fromarray(out, "RGB")
+  return out

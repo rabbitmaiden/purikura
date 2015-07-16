@@ -48,7 +48,7 @@ rsort($files)
         echo <<<HTML
     <div class="photo">
       <a href="/{$file}"><img src="{$file}" width="300"></a><br>
-      {$file}<br/><br>
+      <a href="/{$file}">{$file}</a><br/><br>
       <a href="index.php?action=reprint&file={$file}">Reprint</a>
     </div>
 HTML;

@@ -12,7 +12,7 @@ import io
 from PIL import Image
 import StringIO
 
-musicOn = True
+musicOn = False
 
 #colors
 white = pygame.Color(255,255,255)

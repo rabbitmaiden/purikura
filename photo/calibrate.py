@@ -6,6 +6,7 @@ import time
 import io
 import RPi.GPIO as GPIO
 from PIL import Image
+import chromakey
 
 white = pygame.Color(255,255,255)
 
@@ -40,6 +41,11 @@ def checkForQuit():
       (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE)):
       done()
 
+def done():
+  pygame.quit()
+  sys.exit()
+
+
 def oneSecondNumber(num):
   screen.fill(white)
   screen.blit(num, (190,232))
@@ -53,6 +59,7 @@ def oneSecondNumber(num):
 one = pygame.image.load("images/1.png");
 two = pygame.image.load("images/2.png");
 three = pygame.image.load("images/3.png")
+bg = Image.open("backgrounds/nebula.552.jpg")
 
 while True:
   input_state = GPIO.input(18)
@@ -67,6 +74,8 @@ while True:
     camera.stop_preview()
     stream.seek(0);
     pilImage = Image.open(stream);
+    
+    pilImage = chromakey.chromakey(pilImage, bg)
 
     mode = pilImage.mode
     size = pilImage.size
